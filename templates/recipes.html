@@ -1,0 +1,30 @@
+<!-- templates/recipes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipes</h1>
+        {% if recipes %}
+            <ul>
+                {% for recipe in recipes %}
+                    <li>
+                        <h3>{{ recipe.title }}</h3>
+                        <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
+                        <p><strong>Ready in:</strong> {{ recipe.readyInMinutes }} minutes</p>
+                        <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+                        <a href="https://spoonacular.com/recipes/{{ recipe.title | replace(' ', '-') }}-{{ recipe.id }}">View Recipe</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No recipes found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

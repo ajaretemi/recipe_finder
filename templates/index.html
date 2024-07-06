@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Finder</h1>
+        <form action="/find_recipes" method="POST">
+            <label for="ingredients">Ingredients (comma-separated):</label><br>
+            <input type="text" id="ingredients" name="ingredients" required><br><br>
+            
+            <label for="diet">Dietary Restrictions:</label><br>
+            <select id="diet" name="diet">
+                <option value="">None</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="gluten free">Gluten Free</option>
+                <!-- Add more options as needed -->
+            </select><br><br>
+            
+            <input type="submit" value="Find Recipes">
+        </form>
+    </div>
+</body>
+</html>
